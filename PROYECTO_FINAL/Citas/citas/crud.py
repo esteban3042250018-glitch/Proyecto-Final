@@ -69,14 +69,14 @@ def buscar(nombre, conexionBD):
             cursor.close()
 
 
-def eliminar(nombre, conexionBD):
+def eliminar(id, conexionBD):
     if not conexionBD:
         return False
 
     cursor = None
     try:
         cursor = conexionBD.cursor()
-        cursor.execute("DELETE FROM citas WHERE nombre = %s", (nombre,))
+        cursor.execute("DELETE FROM citas WHERE id = %s", (id,))
         conexionBD.commit()
         return True
     except Exception as e:
