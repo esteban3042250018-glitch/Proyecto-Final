@@ -127,20 +127,20 @@ def buscarCitas(conexionBD):
 def eliminarCitas(conexionBD):
     print("\n\t\t...:::: BORRAR CITAS ::::...\n")
     try:
-        nombre = input("Escribir el nombre del paciente a borrar: ").upper().strip()
+        id = int(input("Escribir el id del paciente a borrar: ").strip())
         pacie = crud.consultar(conexionBD)
         encontrada = False
         
         if pacie and len(pacie) > 0:
             for i in pacie:
-                if i[1] == nombre and not encontrada:
+                if i[0] == id and not encontrada:
                     encontrada = True
                     opc = ""
                     while opc != "si" and opc != "no":
                         opc = input("¿Deseas borrar la cita (si/no)? ").lower().strip() 
                     
                     if opc == "si":
-                        if crud.eliminar(nombre, conexionBD):
+                        if crud.eliminar(id, conexionBD):
                             funciones_citas.accionExitosa()
                         else:
                             funciones_citas.accionNoExitosa()
@@ -148,7 +148,7 @@ def eliminarCitas(conexionBD):
                         print("Operación cancelada.")
 
             if not encontrada:
-                input("No se encontró ningúna cita con ese paciente.")
+                input("No se encontró ningúna cita con ese id.")
         else:
             input("...¡No existen citas con esos datos registrados!...")
     except Exception as e:
