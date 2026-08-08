@@ -38,7 +38,7 @@ def generar():
     tablas = {
         "1": ("citas", "reporte_citas.xlsx", "Citas", "%Y-%m-%d %H:%M:%S"),
         "2": ("doctores", "reporte_doctores.xlsx", "Doctores", "%Y-%m-%d"),
-        "3": ("pacientes", "reporte_pacientes.xlsx", "Pacientes", "%Y-%m-%d")
+        "3": ("paciente", "reporte_pacientes.xlsx", "Pacientes", "%Y-%m-%d")
     }
 
     if opc not in tablas:
