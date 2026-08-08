@@ -129,6 +129,8 @@ def eliminarDoctores(conexionBD):
     print("\n\t\t...:::: BORRAR DOCTORES ::::...\n")
     try:
         id = int(input("Escribir el id del doctor a borrar: ").strip())
+        while not re.match(r"^\d{1}$", id):
+        tel = input(" Teléfono inválido (solo números, 1 dígitos). Intenta de nuevo: ").strip()
         doct = crud.consultar(conexionBD)
         encontrada = False
         
