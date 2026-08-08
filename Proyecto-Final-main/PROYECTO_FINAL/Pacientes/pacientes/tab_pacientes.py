@@ -209,7 +209,7 @@ def buscarPacientes(conexionBD):
 def eliminarPacientes(conexionBD):
     print("\n\t\t...:::: BORRAR PACIENTES ::::...\n")
     try:
-         pacie = crud.consultar(conexionBD)
+        pacie = crud.consultar(conexionBD)
         if pacie and len(pacie) > 0:
             # Creación y configuración de la tabla
             tabla = Table(title="Lista de Pacientes", show_lines=True)
