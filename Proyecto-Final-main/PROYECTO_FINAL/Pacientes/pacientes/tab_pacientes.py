@@ -209,6 +209,42 @@ def buscarPacientes(conexionBD):
 def eliminarPacientes(conexionBD):
     print("\n\t\t...:::: BORRAR PACIENTES ::::...\n")
     try:
+         pacie = crud.consultar(conexionBD)
+        if pacie and len(pacie) > 0:
+            # Creación y configuración de la tabla
+            tabla = Table(title="Lista de Pacientes", show_lines=True)
+
+            # Definición de columnas con estilos y alineación
+            tabla.add_column("Código", justify="right",
+                             style="cyan", no_wrap=True)
+            tabla.add_column("Nombre", style="bold white")
+            tabla.add_column("Apellido", style="bold white")
+            tabla.add_column("Teléfono", style="green")
+            tabla.add_column("Fecha Nac.", justify="center", style="yellow")
+            tabla.add_column("Correo", style="blue")
+            tabla.add_column("Tipo Sangre", justify="center", style="bold red")
+            tabla.add_column("Procedimiento", style="blue")
+
+            # Carga de datos en la tabla
+            for i in pacie:
+                tabla.add_row(
+                    str(i[0]),
+                    str(i[1]),
+                    str(i[2]),
+                    str(i[3]),
+                    str(i[4]),
+                    str(i[5]),
+                    str(i[6]),
+                    str(i[7])
+                )
+
+            # Impresión de la tabla estilizada
+            console.print(tabla)
+            funciones_pacien.espereTecla()
+
+        else:
+            print("\tNo hay pacientes para mostrar, verifique.")
+            funciones_pacien.espereTecla()
         # 1. Capturar la entrada como texto (str) para permitir la validación con regex
         id_str = input("Escribir el id del paciente a borrar: ").strip()
         while not re.match(r"^\d+$", id_str):
