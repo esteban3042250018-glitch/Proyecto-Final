@@ -15,7 +15,7 @@ def menu_principal():
                 "[bold cyan]2.[/bold cyan] PACIENTES\n"
                 "[bold cyan]3.[/bold cyan] CITAS\n"
                 "[bold cyan]4.[/bold cyan] GENERAR REPORTE\n"
-                "[bold cyan]5.[/bold cyan] Regresar"
+                "[bold cyan]5.[/bold cyan] Salir"
             )
         
         console.print(
