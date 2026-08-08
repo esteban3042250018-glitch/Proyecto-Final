@@ -131,6 +131,7 @@ def buscarDoctores(conexionBD):
 def eliminarDoctores(conexionBD):
     print("\n\t\t...:::: BORRAR DOCTORES ::::...\n")
     try:
+        doct = crud.consultar(conexionBD)
         if doct and len(doct) > 0:
             _imprimir_tabla_doctores(doct, "🧑‍⚕️ Doctores Registrados")
             funciones_doc.espereTecla()
