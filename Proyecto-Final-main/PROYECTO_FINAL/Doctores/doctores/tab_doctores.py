@@ -131,6 +131,12 @@ def buscarDoctores(conexionBD):
 def eliminarDoctores(conexionBD):
     print("\n\t\t...:::: BORRAR DOCTORES ::::...\n")
     try:
+        if doct and len(doct) > 0:
+            _imprimir_tabla_doctores(doct, "🧑‍⚕️ Doctores Registrados")
+            funciones_doc.espereTecla()
+        else:
+            print("\tNo hay doctores para mostrar, verifique.")
+            funciones_doc.espereTecla()
         # 1. Solicitar y validar que el ID sea solo números (uno o más dígitos)
         id_str = input("Escribir el ID del doctor a borrar: ").strip()
         while not re.match(r"^\d+$", id_str):
