@@ -131,6 +131,13 @@ def buscarCitas(conexionBD):
 def eliminarCitas(conexionBD):
     print("\n\t\t...:::: BORRAR CITAS ::::...\n")
     try:
+        cit = crud.consultar(conexionBD)
+        if cit and len(cit) > 0:
+            _imprimir_tabla_citas(cit, "📅 Citas Programadas")
+            funciones_citas.espereTecla()
+        else:
+            print("\tNo hay Citas para mostrar, verifique.")
+            funciones_citas.espereTecla()
         id_str = input("Escribir el ID de la cita a borrar: ").strip()
         while not re.match(r"^\d+$", id_str):
             id_str = input(
